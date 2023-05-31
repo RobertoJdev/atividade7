@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './src/Home';
 import Cadastro from './src/Cadastro';
+import Editar from './src/Editar';
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Cadastro' component={Cadastro} />
+        <Stack.Screen name='Editar' component={Editar} />
       </Stack.Navigator>
     </NavigationContainer>
   );

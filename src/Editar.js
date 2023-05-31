@@ -5,17 +5,29 @@ import Axios from 'axios';
 import { useNavigation, userNavigation, useRoute } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-picker';
 
-export default function Cadastro() {
+export default function Editar() {
 
     const [titulo, setTitulo] = useState('');
     const [categoria, setCategoria] = useState('');
     const [modelo, setModelo] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [img, setImg] = useState('');
+    const [id, setId] = useState('');
 
     const navigation = useNavigation();
+    const route = useRoute();
 
-    useEffect(() => { }, []);
+    useEffect(() => {
+
+        const product = route.params.product;
+
+        setTitulo(product.titulo);
+        setCategoria(product.categoria);
+        setModelo(product.modelo);
+        setQuantidade(product.quantidade);
+        setImg(product.img);
+        setId(product.id);
+    }, []);
 
     const selectImage = () => {
         //ImagePicker.showImagePicker({}, (res) => setImg(res.uri));
@@ -27,7 +39,7 @@ export default function Cadastro() {
         if (titulo === '') {
             alert("Favor preencher os dados!");
         } else {
-            Axios.post('https://my-json-server.typicode.com/RobertoJdev/dbjson/products', {
+            Axios.patch('https://my-json-server.typicode.com/RobertoJdev/dbjson/products/' + id, {
                 titulo,
                 categoria,
                 modelo,
@@ -42,6 +54,21 @@ export default function Cadastro() {
 
     }
 
+    const deleteProduct = () => {
+
+        Axios.delete('https://my-json-server.typicode.com/RobertoJdev/dbjson/products/' + id, {
+            titulo,
+            categoria,
+            modelo,
+            quantidade,
+            img,
+        }).then((res) => {
+            alert('Deletado com sucesso!');
+            console.log(res.data);
+            navigation.navigate('Home', { res });
+        }).catch(() => Alert('Ocorreu algum erro!'));
+
+    }
 
     return (
         <View style={styles.container}>
@@ -67,9 +94,9 @@ export default function Cadastro() {
                 placeholder='Quantidade' placeholderTextColor={'#5a5a5a'} style={styles.inpute} />
 
             <View style={styles.button}>
-                <Button style={styles.button} onPress={saveProduct} title='Cadastrar' />
+                <Button style={styles.button} onPress={saveProduct} title='Salvar' />
             </View>
-
+            <Button style={styles.buttonDelete} onPress={deleteProduct} title='Apagar' color={'#FF0000'} />
 
         </View>
     );
@@ -103,5 +130,9 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         margin: 10,
+    },
+    buttonDelete: {
+        //backgroundColor: '#FF0000',
+        //color: '#FF0000',
     }
 });
