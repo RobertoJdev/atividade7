@@ -7,6 +7,10 @@ import ImagePicker from 'react-native-image-picker';
 
 export default function Cadastro() {
 
+
+    const [codigo, setCodigo] = useState('');
+    const [desc, setDesc] = useState('');
+    const [preco, setPreco] = useState('');
     const [titulo, setTitulo] = useState('');
     const [categoria, setCategoria] = useState('');
     const [modelo, setModelo] = useState('');
@@ -33,6 +37,9 @@ export default function Cadastro() {
                 modelo,
                 quantidade,
                 img,
+                codigo,
+                desc,
+                preco,
             }).then((res) => {
                 alert('Salvo com sucesso!');
                 console.log(res.data);
@@ -52,19 +59,20 @@ export default function Cadastro() {
                 <Text>Carregar Imagem</Text>
             </TouchableOpacity>
 
-            <TextInput
-                value={titulo}
-                onChangeText={(txt) => setTitulo(txt)}
-                placeholder='Título'
-                placeholderTextColor={'#5a5a5a'}
-                style={styles.inpute}
-            />
+            <TextInput value={codigo} onChangeText={(txt) => setCodigo(txt)}
+                placeholder='Código' placeholderTextColor={'#5a5a5a'} style={styles.input} />
+            <TextInput value={titulo} onChangeText={(txt) => setTitulo(txt)}
+                placeholder='Título' placeholderTextColor={'#5a5a5a'} style={styles.input} />
+            <TextInput value={desc} onChangeText={(txt) => setDesc(txt)}
+                placeholder='Descrição' placeholderTextColor={'#5a5a5a'} style={styles.input} />
             <TextInput value={categoria} onChangeText={(txt) => setCategoria(txt)}
-                placeholder='Categoria' placeholderTextColor={'#5a5a5a'} style={styles.inpute} />
+                placeholder='Categoria' placeholderTextColor={'#5a5a5a'} style={styles.input} />
             <TextInput value={modelo} onChangeText={(txt) => setModelo(txt)}
-                placeholder='Modelo' placeholderTextColor={'#5a5a5a'} style={styles.inpute} />
+                placeholder='Modelo' placeholderTextColor={'#5a5a5a'} style={styles.input} />
             <TextInput value={quantidade} onChangeText={(txt) => setModelo(txt)}
-                placeholder='Quantidade' placeholderTextColor={'#5a5a5a'} style={styles.inpute} />
+                placeholder='Quantidade' placeholderTextColor={'#5a5a5a'} style={styles.input} />
+            <TextInput value={preco} onChangeText={(txt) => setPreco(txt)}
+                placeholder='Preço' placeholderTextColor={'#5a5a5a'} style={styles.input} />
 
             <View style={styles.button}>
                 <Button style={styles.button} onPress={saveProduct} title='Cadastrar' />
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
     },
-    inpute: {
+    input: {
         fontSize: 16,
         marginTop: 10,
         borderWidth: 1,

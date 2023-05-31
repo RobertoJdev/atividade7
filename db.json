@@ -1,0 +1,53 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Andrew",
+            "location": "Brazil"
+        },
+        {
+            "id": 2,
+            "name": "Julio",
+            "location": "Canadá"
+        },
+        {
+            "name": "Antonio",
+            "location": "Bogotá",
+            "id": 3
+        },
+        {
+            "name": "Manoel",
+            "location": "Argentina",
+            "id": 4
+        },
+        {
+            "name": "Joaquim",
+            "location": "Argélia",
+            "id": 5
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "titulo": "Celular",
+            "categoria": "Eletronico",
+            "modelo": "X10",
+            "quantidade": 10,
+            "img": "https://brmotorolanew.vtexassets.com/arquivos/ids/163311-1200-auto?v=638079352125770000&width=1200&height=auto&aspect=true",
+            "codigo": "QWERTY",
+            "desc": "Aparelho celular para uso pessoal",
+            "preco": "R$ 2685,60"
+        },
+        {
+            "id": 2,
+            "titulo": "Televisão",
+            "categoria": "Eletronico",
+            "modelo": "X10",
+            "quantidade": 10,
+            "img": "https://i.zst.com.br/thumbs/12/34/34/1971653385.jpg",
+            "codigo": "UIOPP",
+            "desc": "TV 50 polegadas",
+            "preco": "R$ 3685,60"
+        }
+    ]
+}
